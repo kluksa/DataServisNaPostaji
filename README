@@ -1,0 +1,31 @@
+DataServisNaPostaji
+
+Upravlja konfiguracijom mjerenja na postaji, cita datoteke sa mjerenjima i 
+šalje podatke u središte (spaja se na WSDL web servis).
+
+Sastoji se od nekoliko modula:
+1. Kontrolni modul
+2. Čitač datoteka
+3. Transfer podataka
+4. Embedana JavaDB (Derby) baza
+
+1. Kontrolni modul
+
+Swing GUI dio aplikacije. 
+
+2. Čitač datoteka
+
+Periodički otvara sve registrirane datoteke i čita ih od vremena zadnjeg 
+podatka i sprema mjerenja u bazu. 
+- Period se definira u kontrolnom modulu i zapisuje u konfiguracijsku datoteku
+- Registracija datoteka obavlja se u kontrolnom modulu i zapisuje u bazu
+
+3. Transfer podataka
+3.1. Periodički čita sve podatke koji nisu označeni kao prebačeni.
+3.2. Prebacuje podatke na serverski WS
+3.3. Na temelju odgovora servera označi sve prebačene podatke
+
+4. Embedana baza
+Drži konfiguraciju postaje, mapiranja između zapisa u datotekama i uređaja-
+komponenata.
+Drži pročitane podatke
