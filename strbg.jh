@@ -1,0 +1,352 @@
+entity ProductMainGroup {
+/**  BCP0020 */
+amgoid String required minlength(36) maxlength(36),
+amgcode String minlength(2) maxlength(2) ,
+amgdesc String minlength(64) maxlength(64) ,
+amgrefid BigDecimal
+}
+
+entity ProductGroups {
+/** BCP0021 */
+aagoid String required minlength(36) maxlength(36),
+amgoid String minlength(36) maxlength(36),
+aagcode String minlength(4) maxlength(4) ,
+aagdesc String minlength(64) maxlength(64) ,
+aagrefid BigDecimal,
+amgrefid BigDecimal
+}
+
+
+entity ReferenceProducts{
+/** BCP0022 */
+aroid String required minlength(36) maxlength(36),
+arcode String minlength(12) maxlength(12) ,
+ardesc String minlength(64) maxlength(64) ,
+aractive BigDecimal,
+arrefid Integer,
+aagrefid Integer,
+poid String minlength(36) maxlength(36),
+aagoid String minlength(36) maxlength(36)
+}
+
+entity Products {
+/** BCP0010 */
+poid String required minlength(36) maxlength(36),
+bsoid String minlength(36) maxlength(36),
+pcode String minlength(12) maxlength(12),
+pdesc1 String minlength(64) maxlength(64),
+pdesc2 String minlength(64) maxlength(64),
+partnr String minlength(32) maxlength(32),
+pacctype String minlength(16) maxlength(16),
+paccdesc String minlength(64) maxlength(64),
+aroid String minlength(36) maxlength(36),
+punit String minlength(8) maxlength(8),
+punitdesc String minlength(32) maxlength(32),
+punitdesc String minlength(32) maxlength(32),
+prefopnr String minlength(10) maxlength(10),
+prefid Integer
+}
+
+
+entity Operations {
+/** BCP0001 */
+bsoid String required minlength(36) maxlength(36),
+bshlandiso String   maxlength(2),
+bsopnr String   maxlength(10),
+bsname String   maxlength(64),
+bsfcoiso String   maxlength(2),
+bsfco String   maxlength(3),
+bsadrland String   maxlength(2),
+bsadrplz String   maxlength(10),
+bsadrort String   maxlength(64),
+bsadrstr String   maxlength(64),
+bshomepage String maxlength(64),
+bslang String   maxlength(3),
+bsuid String   maxlength(2),
+bscommreg String maxlength(80),
+bscourt String maxlength(80),
+bscurrency String  maxlength(3),
+bsbank String maxlength(64),
+bsaccnr String  maxlength(40),
+bsaccblz String maxlength(12),
+bsaccname String maxlength(32),
+bsacciban String maxlength(40),
+bsaccbic String maxlength(32),
+bslongitud BigDecimal,
+bslatitude BigDecimal,
+bsactive String maxlength(1),
+bssource String maxlength(10)
+}
+
+
+
+entity CondensedAuthorization {
+/** BCP0098 */
+authgoid String maxlength(18),
+authopnr String maxlength(16),
+bsoid String maxlength(36)
+}
+
+entity Authorization{
+/** BCP0099 */
+authgoid String maxlength(18),
+authall String maxlength(1),
+asauthmngb String maxlength(2),
+authdiv String maxlength(2),
+autsubdiv String maxlength(2),
+authbuunit String maxlength(2),
+authsoc String maxlength(2),
+authcode String maxlength(3),
+authgr String maxlength(2),
+authcc String maxlength(4),
+authopnr String maxlength(16),
+bsoid String maxlength(36)
+}
+
+entity AddressGroups {
+agoid String required maxlength(36),
+agcode String maxlength(10),
+agdesc String maxlength(64),
+agrefid Integer,
+agrefbetr String maxlength(10),
+agdoid String maxlength(36),
+bsoid String maxlength(36)
+}
+
+entity CustomerAddresses {
+/** BCP0003 */
+adoid String required maxlength(36),
+adopnr String maxlength(10),
+adcustnum String maxlength(16),
+adnamea String maxlength(64),
+adnameb String maxlength(64),
+adnamec String maxlength(64),
+adadrland String maxlength(2),
+adadrplz String maxlength(10),
+adadrort String maxlength(64),
+adadrstr String maxlength(64),
+adentcust String maxlength(1),
+adbank String maxlength(64),
+adaccnr String maxlength(40),
+adaccblz String maxlength(32),
+adaccname String maxlength(32),
+adacciban String maxlength(40),
+adaccbic String maxlength(32),
+addvrnr String maxlength(32),
+adcommreg String maxlength(32),
+adcourt String maxlength(64),
+adlocked String maxlength(1),
+adalwcash String maxlength(1),
+adlockdate LocalDate,
+adlockinfo String maxlength(256),
+agoid String maxlength(36),
+adlongitude Float,
+adlatitude Float,
+adrefid Integer,
+adrefidag Integer,
+bsoid String maxlength(36)
+}
+
+entity ConstructionSite{
+/** BCP0005 */
+csoid String required maxlength(36),
+bsoid String maxlength(36),
+csopnr String maxlength(10),
+csnumber String maxlength(16),
+adoid String maxlength(36), 
+csnamea String maxlength(64),
+csnameb String maxlength(64),
+csadrland String maxlength(2),
+csadrplz String maxlength(10),
+csadrort String maxlength(64),
+csadrstr String maxlength(64),
+csstart LocalDate,
+csend LocalDate,
+cslongitud Float,
+cslatitude Float,
+csrefid Integer
+}
+
+entity OpenInvoices {
+/** BCP0060 */
+oioid String maxlength(36) required,
+   oidiv String maxlength(2),
+   oisubdiv String maxlength(2),
+   oibuunit String maxlength(2),
+   oicocode String maxlength(3),
+   oicocodede String maxlength(41),
+   oicocodecu String maxlength(3),
+   oiland String maxlength(2),
+   oigr String maxlength(2),
+   oigrdesc String maxlength(24),
+   oicc String maxlength(4),
+   oiopnr String maxlength(6),
+   oibsoid String maxlength(36),
+   oimland String maxlength(2),
+   oimcocode String maxlength(3),
+   oimgr String maxlength(2),
+   oicustnr String maxlength(16),
+   oicusadoid String maxlength(36),
+   oicustnrde String maxlength(41),
+   oicustpi String maxlength(1),
+   oicustlock String maxlength(1),
+   oimadrnr Float ,
+   oirtype String maxlength(2),
+   oihrdr Float ,
+   oinotdue Float ,
+   oioverpay Float ,
+   oiper1 Float ,
+   oiper2 Float ,
+   oiper3 Float,
+   oiper4 Float ,
+   oiper5 Float ,
+   oiper6 Float ,
+   oiobalptax Float ,
+   oidbalptax Float ,
+   oiobalatax Float ,
+   oivaluecor Float ,
+   oiubserv Float ,
+   oippserv Float ,
+   oilimiti Float ,
+   oilimite Float ,
+   oiplus String maxlength(3),
+   oiexpdate LocalDate 
+}
+
+entity OrgStructNoCostCenter{
+/** BCV0000A */
+  ormngb String maxlength(2),
+  ormngbdesc String maxlength(24),
+  ordiv String maxlength(2),
+  ordivdesc String maxlength(24),
+  orsubdiv String maxlength(2),
+  orsubdivdesc String maxlength(24),
+  orbunit String maxlength(2),
+  orbunitdesc String maxlength(24),
+  oriso String maxlength(2),
+  orisodesc String maxlength(20),
+  orcocode String maxlength(3),
+  orcocodedesc String maxlength(41),
+  orgroup String maxlength(2),
+  orgroupdesc String maxlength(24),
+  orcococad Float
+}
+
+entity OrgStructWCostCenter{
+/** BCV0000B */
+  ormngb String maxlength(2),
+  ormngbdesc String maxlength(24),
+  ordiv String maxlength(2),
+  ordivdesc String maxlength(24),
+  orsubdiv String maxlength(2),
+  orsubdivdesc String maxlength(24),
+  orbunit String maxlength(2),
+  orbunitdesc String maxlength(24),
+  oriso String maxlength(2),
+  orisodesc String maxlength(20),
+  orcocode String maxlength(3),
+  orcocodedesc String maxlength(41),
+  orgroup String maxlength(2),
+  orgroupdesc String maxlength(24),
+  orcc String maxlength(4),
+  orccdesc String maxlength(24),
+  orcococad Float ,
+  orcccad Float ,
+}
+
+
+entity Receipts{
+/** BCP0050 */
+  roid String required maxlength(36),
+  bsoid String maxlength(36),
+  rtype String maxlength(2),
+  rnuma String maxlength(20),
+  rnumb String maxlength(20),
+  rdate LocalDate,
+  rtime String maxlength(6),
+  adoidcust String maxlength(36),
+  adoidcarr String maxlength(36),
+  csoid String maxlength(36),
+  rlicplate String maxlength(10),
+  rsalefco String maxlength(3),
+  rsalekost String maxlength(4),
+  rrcvfco String maxlength(3),
+  rrcvkost String maxlength(4),
+  rcurrency String maxlength(3),
+  rbscurrenc String maxlength(3),
+  rcurexrate BigDecimal ,
+  rpaycocode String maxlength(10),
+  rpaycodesc String maxlength(80),
+  rdlvcocode String maxlength(10),
+  rdlvcodesc String maxlength(80),
+  rbilled Integer,
+  rcancelled Integer ,
+  rrefopnr String maxlength(10),
+  rrefidrcp Integer ,
+  rrefidcust Integer ,
+  rrefidcarr Integer ,
+  rrefidsite Integer 
+}
+
+entity ReceiptsDetailedPositions{
+/** BCP0051 */
+  rpoid String  required maxlength(36),
+  roid String maxlength(36),
+  poid String maxlength(36),
+  rpvatcode String maxlength(10),
+  rpvat Float ,
+  rpquantity Float ,
+  rpprice Float ,
+  rpdiscount Float ,
+  rpdiscoabs Float ,
+  rploccod String maxlength(16),
+  prlocdesc String maxlength(64),
+  rpreflfgid Integer ,
+  rprefopnr String maxlength(10),
+  rprefproid Integer
+}
+
+relationship ManyToOne {
+    ProductGroups{productMainGroup} to ProductMainGroup
+    ReferenceProducts{productGroup} to ProductGroups
+    Products{operation} to Operations
+	Receipts{operation} to Operations,
+    ReceiptsDetailedPositions{receipts} to Receipts,
+	OpenInvoices{operation} to Operations,
+    OpenInvoices{customerAddress} to CustomerAddresses,
+    OrgStructNoCostCenter{operation} to Operations, 
+    OrgStructNoCostCenter{authorization} to Authorization,
+    OrgStructWCostCenter{operation} to Operations, 
+    OrgStructWCostCenter{authorization} to Authorization,
+	ConstructionSite{operation} to Operations,
+	Authorization{operation} to Operations,
+	CondensedAuthorization{operation} to Operations,
+    AddressGroups{operation} to Operations
+
+
+}
+
+
+relationship OneToOne {
+	Receipts{customerAddress} to CustomerAddresses,
+	Receipts{constructionSite} to ConstructionSite,
+    ReceiptsDetailedPositions{product} to Products,
+	AddressGroups{customerAddress} to CustomerAddresses{addressGroup},
+	Operations{customerAddress} to CustomerAddresses{Operation},
+    CustomerAddresses{constructionSite} to ConstructionSite{customerAddress},
+	Products{referenceProduct} to ReferenceProducts{product}
+}
+
+
+
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate all with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with mySuffix
